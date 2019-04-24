@@ -1,7 +1,7 @@
-var commencer = require('./presentation.js')
+var presentation = require('./presentation.js')
 
 console.log('** Administration Collegues **');
 
-commencer.start(); 
+presentation.start(); 
 
 

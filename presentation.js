@@ -1,6 +1,5 @@
 var rechercherColleguesParNom = require('./service.js')
 
-
 function start() {
 
     // récupération du module `readline`
@@ -16,24 +15,38 @@ function start() {
     });
     // récupération de la saisie utilisateur
 
+/*var run = ()=>{
 
+}
+est équivalent à la function en bas, avec lambdas
+
+*/
     function run() {
     
         rl.question(parNom + '\n' + sortir, function (saisie) {
 
             if (saisie == '1') {
 
-                rl.question('veillez saisir un nom', function(nom){
-                    console.log(">> Recherche en cours du nom xxx")
-                    rechercherColleguesParNom.rechercherColleguesParNom(nom, function(colleguesTrouves){
-                        
-                        console.log(colleguesTrouves); 
-                        
-                        }); 
-                });
-                run();
+                rl.question('veillez saisir un nom ', function(nom){
+                    console.log(">> Recherche en cours du collegue"+ ' ' +nom)
+                    rechercherColleguesParNom.rechercherColleguesParNom(nom, (colleguesTrouves)=>{
 
-            }
+                        colleguesTrouves.forEach(collegue => {
+                            console.log(`${collegue.nom} ${collegue.prenoms} (${collegue.dateDeNaissance})`);
+                        });
+                        run();
+        
+            },(messageErr) => {
+
+                console.log('OOps :', messageErr);
+      
+                start();
+      
+              });
+      
+            });
+
+        }
 
             if (saisie == '99') {
                 console.log("Aurevoir !");
