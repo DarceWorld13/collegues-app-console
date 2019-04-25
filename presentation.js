@@ -27,7 +27,7 @@ function start() {
                     promesseCollegues$.then(tabColleguesTrouves => {
                         // cas ok, j'ai le tableau de collègues
                         console.log(tabColleguesTrouves);
-                        run(); 
+                        run();  
                     })
                     .catch(err => {
 
